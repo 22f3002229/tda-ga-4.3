@@ -13,6 +13,10 @@ app.add_middleware(
 )
 
 
+@app.get('/')
+async def root():
+    return {"message": "Hello World"}
+
 @app.get("/country-outline")
 async def get_country_outline(country: str = Query(..., description="Country name to fetch Wikipedia page for")):
     url = f"https://en.wikipedia.org/wiki/{country}"
